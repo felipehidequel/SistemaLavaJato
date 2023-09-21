@@ -1,8 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include"veiculos.h"
-#include "../cliente/cliente.h"
+#include "./includes/veiculos.h"
+
 
 typedef struct veiculos
 {

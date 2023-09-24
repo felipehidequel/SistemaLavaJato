@@ -10,7 +10,6 @@
 using namespace std;
 /*Compara o nome de 2 clientes*/
 int compara_nome(Cliente n1, Cliente n2);
-/*Imprime lista de clientes*/
-void imprime_clientes(vector<Cliente> clientes);
+char menu_principal();
 
 #endif

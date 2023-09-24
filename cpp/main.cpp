@@ -2,6 +2,7 @@
 #include "cliente.hpp"
 #include "veiculo.hpp"
 #include "utilities.hpp"
+#include "menu.hpp"
 #include <algorithm>
 
 int main()
@@ -9,6 +10,7 @@ int main()
     vector<Cliente> clientes;
     int id = 0; // token para cliente
     char escolha = '0';
+    int cont;
 
     while (escolha != '7')
     {
@@ -21,7 +23,9 @@ int main()
         switch (escolha)
         {
         case '1': // adicionar cliente
+            cout << "Digite o nome do cliente: ";
             cin >> nome;
+            cout << "Digite o telefone do cliente: ";
             cin >> telefone;
             novo_cliente = Cliente(id, nome, telefone);
             id++;
@@ -35,8 +39,7 @@ int main()
                 cin >> placa;
                 cout << "Digite a cor do veiculo: ";
                 cin >> cor;
-                cout << "Digite o tipo de serviço: "; // to_fix: exibir sub menu de opções inves de pedir para o cliente informar o serviço
-                cin >> tipo_servico;
+                tipo_servico = menu_servico();
 
                 Veiculo new_veiculo(marca, modelo, placa, cor, tipo_servico);
                 novo_cliente.AdicionarVeiculo(new_veiculo);
@@ -75,14 +78,73 @@ int main()
             else
                 cout << "Lista de clientes vazia!" << endl;
             break;
-        // case '3': // listar veiculos atendidos
-        //     break;
-        // case '4': // buscar cliente
-        //     break;
-        // case '5': // editar informações de cliente
-        //     break;
-        // case '6': // consultar veiculos em serviço
-        //     break;
+        case '3': // listar veiculos atendidos
+            for (auto cliente : clientes)
+            {
+                cliente.ListarVeiculos(1);
+            }
+            break;
+        case '4': // buscar cliente
+            cont = 0;
+            cout << "Informe o nome do cliente: " << endl;
+            cin >> nome;
+            for (auto cliente : clientes)
+            {
+                if (cliente.BuscarNome(nome))
+                {
+                    cliente.Imprime();
+                    cont++;
+                }
+            }
+            if (cont != 0)
+                cout << "Cliente não encontrado!" << endl;
+            break;
+        case '5': // editar informações de cliente
+            imprime_clientes(clientes);
+            cout << "Informe o ID do cliente que deseja editar as informções:" << endl;
+            cin >> id;
+            for (auto cliente : clientes)
+            {
+                if (cliente.BuscarId(id))
+                {
+                    cout << "O que será alterado?" << endl;
+                    cout << "1 - Nome" << endl;
+                    cout << "2 - Telefone" << endl;
+                    cout << "3 - Ambos" << endl;
+                    cin >> escolha;
+                    switch (escolha)
+                    {
+                    case '1':
+                        cout << "Digite o novo nome: ";
+                        cin >> nome;
+                        cliente.setNome(nome);
+                        break;
+                    case '2':
+                        cout << "Digite o novo telefone: ";
+                        cin >> telefone;
+                        cliente.setTelefone(telefone);
+                        break;
+                    case '3':
+                        cout << "Digite o novo nome: ";
+                        cin >> nome;
+                        cliente.setNome(nome);
+                        cout << "Digite o novo telefone: ";
+                        cin >> telefone;
+                        cliente.setTelefone(telefone);
+                        break;
+                    default:
+                        cout << "Entrada invalida!" << endl;
+                        break;
+                    }
+                }
+            }
+            break;
+        case '6': // consultar veiculos em serviço
+            for (auto cliente : clientes)
+            {
+                cliente.ListarVeiculos(0);
+            }
+            break;
         case '7': // sair
             cout << "Saindo..." << endl;
             break;

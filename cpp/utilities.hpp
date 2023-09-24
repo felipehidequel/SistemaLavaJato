@@ -1,5 +1,5 @@
-#ifndef UTILITIES_H
-#define UTILITIES_H
+#ifndef UTILITIES_HPP
+#define UTILITIES_HPP
 
 #include <iostream>
 #include <string.h>
@@ -10,6 +10,5 @@
 using namespace std;
 /*Compara o nome de 2 clientes*/
 int compara_nome(Cliente n1, Cliente n2);
-char menu_principal();
 
-#endif
+#endif //UTILIES_HPP

@@ -57,3 +57,45 @@ string menu_servico()
         }
     }
 }
+
+char menu_altera_dados()
+{
+    char escolha;
+    cout << "O que será alterado?" << endl;
+    cout << "1 - Nome" << endl;
+    cout << "2 - Telefone" << endl;
+    cout << "3 - Ambos" << endl;
+    cout << "4 - voltar" << endl;
+    cin >> escolha;
+    return escolha;
+}
+
+void switch_altera_dados(char escolha, string nome, string telefone, Cliente *cliente)
+{
+    switch (escolha)
+    {
+    case '1':
+        cout << "Digite o novo nome: ";
+        cin >> nome;
+        cliente->setNome(nome);
+        break;
+    case '2':
+        cout << "Digite o novo telefone: ";
+        cin >> telefone;
+        cliente->setTelefone(telefone);
+        break;
+    case '3':
+        cout << "Digite o novo nome: ";
+        cin >> nome;
+        cliente->setNome(nome);
+        cout << "Digite o novo telefone: ";
+        cin >> telefone;
+        cliente->setTelefone(telefone);
+        break;
+    case '4':
+        return;
+    default:
+        cout << "Entrada invalida!" << endl;
+        break;
+    }
+}

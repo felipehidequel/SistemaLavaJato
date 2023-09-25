@@ -15,7 +15,7 @@ private:
     string modelo;       // Nome do modelo
     string placa;        // placa do veiculo
     string cor;          // cor
-    string tipo_servico; // tipo de serviçõa ser realizado no lavajato
+    string tipo_servico; // tipo de serviço ser realizado no lavajato
 
 public:
     Veiculo() = default;

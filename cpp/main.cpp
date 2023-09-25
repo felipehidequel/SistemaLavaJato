@@ -101,42 +101,17 @@ int main()
             break;
         case '5': // editar informações de cliente
             imprime_clientes(clientes);
-            cout << "Informe o ID do cliente que deseja editar as informções:" << endl;
+            cout << "Informe o ID do cliente que deseja editar as informações:" << endl;
             cin >> id;
-            for (auto cliente : clientes)
+            for (auto &cliente : clientes)
             {
                 if (cliente.BuscarId(id))
                 {
-                    cout << "O que será alterado?" << endl;
-                    cout << "1 - Nome" << endl;
-                    cout << "2 - Telefone" << endl;
-                    cout << "3 - Ambos" << endl;
-                    cin >> escolha;
-                    switch (escolha)
-                    {
-                    case '1':
-                        cout << "Digite o novo nome: ";
-                        cin >> nome;
-                        cliente.setNome(nome);
-                        break;
-                    case '2':
-                        cout << "Digite o novo telefone: ";
-                        cin >> telefone;
-                        cliente.setTelefone(telefone);
-                        break;
-                    case '3':
-                        cout << "Digite o novo nome: ";
-                        cin >> nome;
-                        cliente.setNome(nome);
-                        cout << "Digite o novo telefone: ";
-                        cin >> telefone;
-                        cliente.setTelefone(telefone);
-                        break;
-                    default:
-                        cout << "Entrada invalida!" << endl;
-                        break;
-                    }
+                    escolha = menu_altera_dados();
+                    switch_altera_dados(escolha, nome, telefone, &cliente);                    
                 }
+                else
+                    cout<< "Cliente não encontrado" << endl;
             }
             break;
         case '6': // consultar veiculos em serviço

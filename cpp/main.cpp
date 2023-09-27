@@ -108,10 +108,10 @@ int main()
                 if (cliente.BuscarId(id))
                 {
                     escolha = menu_altera_dados();
-                    switch_altera_dados(escolha, nome, telefone, &cliente);                    
+                    switch_altera_dados(escolha, nome, telefone, &cliente);
                 }
                 else
-                    cout<< "Cliente não encontrado" << endl;
+                    cout << "Cliente não encontrado" << endl;
             }
             break;
         case '6': // consultar veiculos em serviço

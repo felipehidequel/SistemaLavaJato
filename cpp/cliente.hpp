@@ -14,9 +14,9 @@ private:
     int id;
     string nome;
     string telefone;
-    vector<Veiculo> veiculos;
 
 public:
+    Cliente *proximo;
     Cliente() = default;
     Cliente(int id, string nome, string telefone);
 
